@@ -17,7 +17,8 @@ import weka.core.pmml.jaxbbindings.Application;
 
 public class AppMain extends Application {
 
-	public static String [] goodFeatures = {"mac_stats_total_bytes_sdus_dl","mac_stats_total_bytes_sdus_ul"};
+	public static String [] goodFeatures = {"mac_stats_total_bytes_sdus_ul","mac_stats_total_bytes_sdus_dl", "eNBcellConfig0ulPuschPower", "eNBcellConfig0dlBandwidth", "eNBcellConfig0ulBandwidth",
+			"eNBcellConfig0dlPdschPower", "eNBcellConfig0enable64QAM", "eNBcellConfig0siConfigsfn"};
 			
 	public static int loc_in_vector(String[] v, int n, String searched) {
 		int i;
@@ -650,7 +651,14 @@ public class AppMain extends Application {
 					if(value>574243368) {
 						matriceCodata[i][j]=charactersForEncode.charAt(5);
 					}
-				}else {	//restul au multe valori comune si putem coda
+				}else if(matriceValori[0][j].equals("y")) {
+					if(matriceValori[i][j].equals("yes")) {
+						matriceCodata[i][j]='y';
+					}else {
+						matriceCodata[i][j]='n';
+					}
+				}
+				else {	//restul au multe valori comune si putem coda
 					int k;
 					for(k=0;k<indexValoriUnice;k++) {
 						if(matriceValori[i][j].equals(valoriUnice[k])) {	//mai exista undeva si l-am encodat
