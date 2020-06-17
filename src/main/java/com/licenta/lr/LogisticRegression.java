@@ -25,8 +25,6 @@ import org.nd4j.linalg.lossfunctions.LossFunctions;
 
 
 import java.io.IOException;
-import java.lang.management.ManagementFactory;
-import java.lang.management.OperatingSystemMXBean;
 import java.time.Duration;
 import java.time.Instant;
 
@@ -46,7 +44,7 @@ public class LogisticRegression {
     	
         DataSet allData;
         try (RecordReader recordReader = new CSVRecordReader(0, ',')) {
-            recordReader.initialize(new FileSplit(new ClassPathResource("test.txt").getFile()));
+            recordReader.initialize(new FileSplit(new ClassPathResource("datalr.txt").getFile()));
 
             DataSetIterator iterator = new RecordReaderDataSetIterator(recordReader, 150, FEATURES_COUNT, CLASSES_COUNT);
             allData = iterator.next();
@@ -58,7 +56,7 @@ public class LogisticRegression {
         normalizer.fit(allData);
         normalizer.transform(allData);
 
-        SplitTestAndTrain testAndTrain = allData.splitTestAndTrain(0.65);
+        SplitTestAndTrain testAndTrain = allData.splitTestAndTrain(0.70);
         DataSet trainingData = testAndTrain.getTrain();
         DataSet testData = testAndTrain.getTest();
 
