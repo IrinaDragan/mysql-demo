@@ -1,17 +1,3 @@
-@relation ads
-
-@attribute mac_stats_total_bytes_sdus_ul numeric
-@attribute mac_stats_total_bytes_sdus_dl numeric
-@attribute eNBcellConfig0ulPuschPower numeric
-@attribute eNBcellConfig0dlBandwidth numeric
-@attribute eNBcellConfig0ulBandwidth numeric
-@attribute eNBcellConfig0dlPdschPower numeric
-@attribute eNBcellConfig0enable64QAM numeric
-@attribute eNBcellConfig0siConfigsfn numeric
-@attribute y {0, 1}
-
-
-@data
 2181380,389398,-96,25,25,-27,0,149,1
 408330,22947,-96,25,25,-27,0,549,1
 1709698,202875,-96,25,25,-27,0,849,1

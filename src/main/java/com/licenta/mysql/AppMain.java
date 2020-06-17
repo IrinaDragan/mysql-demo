@@ -17,7 +17,7 @@ import weka.core.pmml.jaxbbindings.Application;
 
 public class AppMain extends Application {
 
-	public static String [] goodFeatures = {"mac_stats_total_bytes_sdus_ul","mac_stats_total_bytes_sdus_dl", "eNBcellConfig0ulPuschPower", "eNBcellConfig0dlBandwidth", "eNBcellConfig0ulBandwidth",
+	public static String [] goodFeatures = {"id","mac_stats_total_bytes_sdus_ul","mac_stats_total_bytes_sdus_dl", "eNBcellConfig0ulPuschPower", "eNBcellConfig0dlBandwidth", "eNBcellConfig0ulBandwidth",
 			"eNBcellConfig0dlPdschPower", "eNBcellConfig0enable64QAM", "eNBcellConfig0siConfigsfn"};
 			
 	public static int loc_in_vector(String[] v, int n, String searched) {

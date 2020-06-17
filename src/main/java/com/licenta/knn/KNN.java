@@ -3,6 +3,7 @@ package com.licenta.knn;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -24,15 +25,14 @@ public class KNN {
 		}
 		return inputReader;
 	}
- 
-	public static void main(String[] args) throws Exception {
-		
-    	//execution time measurement
+	
+	public static long knn() throws Exception {
+		//execution time measurement
     	Instant start = Instant.now();
     	
     	//memory usage
     	long beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
-    	System.out.println("Before execution: " + beforeUsedMem);
+    	//System.out.println("Before execution: " + beforeUsedMem);
 		
 		BufferedReader datafile = readDataFile("resources/dataKNN.txt");
  
@@ -62,7 +62,7 @@ public class KNN {
 			if(predicted == expected ) {
 				count ++;
 			}
-			System.out.println("Predicted: "+ predicted+" Expected:"+expected);
+			//System.out.println("Predicted: "+ predicted+" Expected:"+expected);
 		}
 		System.out.println("Precision: "  + (float)count/countInstancesForTest*100);
 		
@@ -72,10 +72,21 @@ public class KNN {
         System.out.println("Elapsed time in miliseconds: "+timeElapsed);
         
     	long afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
-    	System.out.println("After execution: " + afterUsedMem);
+    	//System.out.println("After execution: " + afterUsedMem);
     	double x = afterUsedMem-beforeUsedMem;
         
     	System.out.println("Memory used: " + x/1024/1024+"Mb");
+    	return timeElapsed;
 		
+	}
+	public static void main(String[] args) throws Exception {
+		
+		long numarIteratii = 1;
+
+		int timpMediu = 0;
+		for(int i=0; i < numarIteratii; i++){
+			timpMediu+=knn();
+		}
+		System.out.println("Timpul mediu de executie: " + (double) timpMediu/numarIteratii);
 	}
 }
